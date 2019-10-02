@@ -176,7 +176,7 @@ article.playlist > .playlist-row > .wait, article.panel > .playlist-row > .wait 
   }
 }
 
-@media (max-height: 640px) {
+@media (max-height: 320px) {
   header {
     display: none;
   }
