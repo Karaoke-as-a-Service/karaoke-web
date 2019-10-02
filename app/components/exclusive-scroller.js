@@ -5,9 +5,7 @@ export default Component.extend({
     tagName: "article",
 
     didInsertElement() {
-        disableBodyScroll(this.element, {
-            allowTouchMove: false,
-        });
+        disableBodyScroll(this.element);
     },
     willDestroyElement() {
         enableBodyScroll(this.element);

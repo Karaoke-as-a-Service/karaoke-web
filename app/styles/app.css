@@ -3,7 +3,6 @@
 }
 
 html, body {
-  overflow: hidden;
   top: 0;
   left: 0;
   height: 100%;
@@ -11,7 +10,6 @@ html, body {
 }
 
 body {
-  position: relative;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin: 0;
   padding: 0;
@@ -34,7 +32,7 @@ main {
   top: 110px;
   left: 0;
   right: 0;
-  bottom: 0;
+  height: calc(100% - 110px);
   display: grid;
   grid: "filter filter" auto
         "songs playlist" 1fr
@@ -62,7 +60,6 @@ article.results {
   background-color: #eee;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  height: calc(100% + 1px);
 }
 article.results > .song-row {
   display: grid;
@@ -158,6 +155,7 @@ article.playlist > .playlist-row > .wait, article.panel > .playlist-row > .wait 
 
 @media (max-width: 860px) {
   main {
+    height: calc(100% - 110px);
     display: grid;
     grid: "filter" auto
           "songs" 1fr
@@ -184,6 +182,7 @@ article.playlist > .playlist-row > .wait, article.panel > .playlist-row > .wait 
   }
   main {
     top: 0;
+    height: 100%;
   }
 }
 
