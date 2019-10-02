@@ -43,10 +43,6 @@ export default Controller.extend({
     })).sort((a, b) => a.name.localeCompare(b.name));
   }),
   dismissAddDialog() {
-    this.setProperties({
-      searchText: "",
-      searchTextDebounced: "",
-    });
     document.getElementById('searchField').focus();
     later(() => {
       this.setProperties({
@@ -68,6 +64,7 @@ export default Controller.extend({
         'name': this.get('nameText'),
         'command': 'add'
       }));
+      this.set('searchText', "");
       this.dismissAddDialog();
     },
     updateLanguages() {
