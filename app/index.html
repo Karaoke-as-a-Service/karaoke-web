@@ -21,6 +21,12 @@
 
     <script src="{{rootURL}}assets/vendor.js"></script>
     <script src="{{rootURL}}assets/karaoke-web.js"></script>
+    <script>
+      function preventDefault(e) {
+        e.preventDefault();
+      }
+      document.body.addEventListener('touchmove', preventDefault);
+    </script>
 
     {{content-for "body-footer"}}
   </body>
