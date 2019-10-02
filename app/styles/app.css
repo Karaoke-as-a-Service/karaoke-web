@@ -135,6 +135,12 @@ article.playlist > .playlist-row > .wait, article.panel > .playlist-row > .wait 
 	font-weight: bold;
 }
 
+.playing p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .content .results {
 	display: inline-block;
 	min-width: 450px;
