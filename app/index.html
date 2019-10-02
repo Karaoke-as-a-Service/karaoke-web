@@ -25,7 +25,7 @@
       function preventDefault(e) {
         e.preventDefault();
       }
-      document.body.addEventListener('touchmove', preventDefault);
+      document.body.addEventListener('touchmove', preventDefault, { passive: false });
     </script>
 
     {{content-for "body-footer"}}
