@@ -35,7 +35,6 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  overflow: hidden;
   display: grid;
   grid: "filter filter" auto
         "songs playlist" 1fr
@@ -61,8 +60,9 @@ main > aside select {
 article.results {
   grid-area: songs;
   background-color: #eee;
-  overflow-y: auto;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  height: calc(100% + 1px);
 }
 article.results > .song-row {
   display: grid;
@@ -175,6 +175,15 @@ article.playlist > .playlist-row > .wait, article.panel > .playlist-row > .wait 
   }
   article.results > .song-row > .year {
     display: none;
+  }
+}
+
+@media (max-height: 500px) {
+  header {
+    display: none;
+  }
+  main {
+    top: 0;
   }
 }
 

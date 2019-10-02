@@ -14,7 +14,7 @@
       {{/each}}
     </select>
   </aside>
-  <article class="results">
+  <ExclusiveScroller @classNames="results">
     {{#each this.model as |row|}}
       <div class="song-row" role="button" onclick={{action "selectSong" row}}>
         <div class="title">{{row.title}}</div>
@@ -25,7 +25,7 @@
       </div>
     {{/each}}
     {{infinity-loader infinityModel=this.model loadedText="End of songs"}}
-  </article>
+  </ExclusiveScroller>
   <article class="playlist">
     {{#each this.playlist as |row|}}
       <div class="playlist-row">
