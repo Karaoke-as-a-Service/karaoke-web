@@ -23,7 +23,9 @@
     <script src="{{rootURL}}assets/karaoke-web.js"></script>
     <script>
       function preventDefault(e) {
-        e.preventDefault();
+        if(e.target === document.body) {
+          e.preventDefault();
+        }
       }
       document.body.addEventListener('touchmove', preventDefault, { passive: false });
     </script>
