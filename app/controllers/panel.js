@@ -8,7 +8,7 @@ export default Controller.extend({
   init() {
     this._super(...arguments);
     this.playlist = [];
-    const ws = new WebSocket("wss://" + window.location.hostname + ":8080", "karaoke");
+    const ws = new WebSocket("ws://" + window.location.hostname + ":8080", "karaoke");
     this.set('ws', ws);
     ws.onmessage = this.receivedMessage.bind(this);
   },
