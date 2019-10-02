@@ -78,6 +78,11 @@ export default Controller.extend({
       this.set('enabledLanguages', selectedLanguages);
       return true;
     },
+    blurSearch() {
+      console.log(arguments);
+      document.getElementById('searchField').blur();
+      return false;
+    },
   },
   receivedMessage(message) {
     message = JSON.parse(message.data);

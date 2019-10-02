@@ -3,17 +3,17 @@
   <p><label>Singer:</label> {{playing.name}}</p>
 </header>
 <main>
-  <aside>
+  <form action="#" onsubmit={{action "blurSearch"}}>
     <div class="form-group search">
       <label for="searchField">Search:</label>
-      <Input @value={{searchText}} @id="searchField" @type="text" @autofocus=true/>
+      <Input @value={{searchText}} @id="searchField" @type="search" @autofocus=true/>
     </div>
     <select id="languages" class="form-group" name="languages" multiple oninput={{action "updateLanguages"}}>
       {{#each languages as |language|}}
         <option data-name={{language.name}} selected={{language.selected}}>{{if language.name language.name "<unknown>"}}</option>
       {{/each}}
     </select>
-  </aside>
+  </form>
   <ExclusiveScroller @classNames="results">
     {{#each this.model as |row|}}
       <div class="song-row" role="button" onclick={{action "selectSong" row}}>
