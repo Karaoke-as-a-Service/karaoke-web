@@ -1,1 +1,13 @@
-{{outlet}}
+<header class="playing well">
+  <p><label>Now playing:</label> {{playing.song.title}} ({{playing.song.artist}})</p>
+  <p><label>Singer:</label> {{playing.name}}</p>
+</header>
+<article class="panel">
+  {{#each this.playlist as |row|}}
+    <div class="playlist-row">
+      <div class="title">{{row.song.title}} ({{row.song.artist}})</div>
+      <div class="singer">{{row.name}}</div>
+      <div class="wait">{{waittime row.forecast}}</div>
+    </div>
+  {{/each}}
+</article>

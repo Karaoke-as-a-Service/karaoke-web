@@ -90,26 +90,29 @@ article.playlist {
   background-color: #efe;
   overflow-y: auto;
 }
-article.playlist > .playlist-row {
+article.panel > .playlist-row {
+  padding: 0 5px;
+}
+article.playlist > .playlist-row, article.panel > .playlist-row {
   display: grid;
   grid: "title singer wait" 1fr
         / 2fr 1fr 75px;
 }
-article.playlist > .playlist-row:nth-child(even) {
+article.playlist > .playlist-row:nth-child(even), article.panel > .playlist-row:nth-child(even) {
   background-color: #ded;
 }
-article.playlist > .playlist-row > div {
+article.playlist > .playlist-row > div, article.panel > .playlist-row > div {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-article.playlist > .playlist-row > .title {
+article.playlist > .playlist-row > .title, article.panel > .playlist-row > .title {
   grid-area: title;
 }
-article.playlist > .playlist-row > .singer {
+article.playlist > .playlist-row > .singer, article.panel > .playlist-row > .singer {
   grid-area: singer;
 }
-article.playlist > .playlist-row > .wait {
+article.playlist > .playlist-row > .wait, article.panel > .playlist-row > .wait {
   grid-area: wait;
 }
 

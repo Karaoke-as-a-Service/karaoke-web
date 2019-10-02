@@ -14,27 +14,25 @@ export default Controller.extend({
   },
   receivedMessage(message) {
     message = JSON.parse(message.data);
-    switch(message[1]) {
+    switch(message.type) {
       case "playlist": {
-        const list = message[1].reverse();
+        const playing = message.playlist.shift();
+        this.set('playing', {
+          song: musiclist[playing.song],
+          name: playing.singer,
+          id: playing.id
+        });
         let playtime = this.get('playing.song.duration') + 60;
-        list.forEach((entry) => {
+        message.playlist.forEach((entry) => {
           entry.song = musiclist[entry.song];
           entry.forecast = playtime;
-          playtime += 60 + entry.song.duration;
+          entry.name = entry.singer;
+          if (entry.song) {
+            playtime += 60 + entry.song.duration;
+          }
         });
-        this.set('playlist', list);
-        break;
-      }
-      case "playing": {
-        const item = message[1];
-        this.set('playing', {
-          song: musiclist[item.song],
-          name: item.name,
-          id: item.id
-        });
-        break;
+        this.set('playlist', message.playlist);
       }
     }
-  }
+  },
 });
