@@ -1,0 +1,65 @@
+<header class="playing well">
+  <p><label>Now playing:</label> {{playing.song.title}} ({{playing.song.artist}})</p>
+  <p><label>Singer:</label> {{playing.name}}</p>
+</header>
+<main>
+  <form>
+    <div class="form-group search">
+      <label for="searchField">Search:</label>
+      {{input value=searchText id="searchField" type="text" autofocus="autofocus"}}
+    </div>
+    <select id="languages" class="form-group" name="languages" multiple oninput={{action "updateLanguages"}}>
+      {{#each languages as |language|}}
+        <option data-name={{language.name}} selected={{language.selected}}>{{if language.name language.name "<unknown>"}}</option>
+      {{/each}}
+    </select>
+  </form>
+  <article class="results">
+    {{#each this.model as |row|}}
+      <div class="song-row" role="button" onclick={{action "selectSong" row}}>
+        <div class="title">{{row.title}}</div>
+        <div class="artist">{{row.artist}}</div>
+        <div class="year">{{row.year}}</div>
+        <div class="language">{{row.language}}</div>
+        <div class="duration">{{duration row.duration}}</div>
+      </div>
+    {{/each}}
+    {{infinity-loader infinityModel=this.model loadedText="End of songs"}}
+  </article>
+  <article class="playlist">
+    {{#each this.playlist as |row|}}
+      <div class="playlist-row">
+        <div class="title">{{row.song.title}} ({{row.song.artist}})</div>
+        <div class="singer">{{row.name}}</div>
+        <div class="wait">{{waittime row.forecast}}</div>
+      </div>
+    {{/each}}
+  </article>
+</main>
+{{#if selection}}
+  <BsModal @onHide={{action "cancelSongRequest"}} @onSubmit={{action "submitSongRequest"}} as |Modal|>
+    <Modal.header>
+      <h4 class="modal-title">Add a Song Request</h4>
+    </Modal.header>
+    <Modal.body>
+      <form {{action "submitSongRequest" on="submit"}}>
+        <div class="form-group">
+          <label>Artist</label>
+          <p class="form-control-static">{{selection.artist}}</p>
+        </div>
+        <div class="form-group">
+          <label>Title</label>
+          <p class="form-control-static">{{selection.title}}</p>
+        </div>
+        <div class="form-group">
+          <label for="nameField">Please enter your name:</label>
+          {{input type="text" value=nameText class="form-control" id="nameField"}}
+        </div>
+      </form>
+    </Modal.body>
+    <Modal.footer>
+      <BsButton @onClick={{action Modal.close}} @type="danger">Cancel</BsButton>
+      <BsButton @onClick={{action Modal.submit}} @type="success">Submit</BsButton>
+    </Modal.footer>
+  </BsModal>
+{{/if}}
