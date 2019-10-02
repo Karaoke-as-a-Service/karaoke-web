@@ -79,7 +79,6 @@ export default Controller.extend({
       return true;
     },
     blurSearch() {
-      console.log(arguments);
       document.getElementById('searchField').blur();
       return false;
     },
